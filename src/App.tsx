@@ -1,7 +1,7 @@
 
 export const App = () => {
   return (
-    <div>Hola</div>
+    <div>Hola App</div>
   )
 }
 
