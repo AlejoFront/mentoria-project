@@ -1,9 +1,11 @@
-import {Suspense, useEffect} from 'react';
-
+import { BrowserRouter as Router } from 'react-router-dom';
+import RoutersMain from './RoutersMain';
 
 export const AppRoutes = () => {
   return (
-    <div>AppRoutes</div>
+    <Router>
+      <RoutersMain isAthenticated={true} />
+    </Router>
   )
 }
 

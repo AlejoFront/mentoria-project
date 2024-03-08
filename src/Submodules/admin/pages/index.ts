@@ -1,0 +1,1 @@
+export * from './homePrivate/homePrivate.page';
