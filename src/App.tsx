@@ -1,8 +1,4 @@
-
-export const App = () => {
-  return (
-    <div>Hola App</div>
-  )
-}
+import { AppRoutes } from './Routers'
+export const App = () => <AppRoutes/>
 
 export default App;

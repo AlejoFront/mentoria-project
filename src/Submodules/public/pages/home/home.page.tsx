@@ -3,7 +3,7 @@
 export const HomePage = () => {
   return (
     <>
-        Home Admin
+        Home Public
     </>
   )
 }
