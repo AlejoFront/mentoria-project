@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import {signInWithEmailAndPassword} from 'firebase/auth';
 import {auth} from 'Config';
-import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+import {isExistProfileByUID, createUserByUID} from 'Shared/utils'
+
 const provider = new GoogleAuthProvider();
 export const LoginPage = () => {
 
@@ -10,15 +12,17 @@ export const LoginPage = () => {
 
   const handleClick = () => {
     signInWithEmailAndPassword(auth,email, password).then((response) => {
-      console.log(response)
+      /// console.log(response)
     })
     .catch(e => console.log(e))
   }
 
   const onSignInGoogle = () => {
     signInWithPopup(auth, provider)
-    .then((response) => {
-      console.log(response)
+    .then(async ({user}) => {
+      if(await isExistProfileByUID(user.uid)) {return;}
+      const data = { displayName: user.displayName!,email: user.email!, photoURL: user.photoURL!};
+      await createUserByUID(data,user.uid);
     }).catch((e) => console.log(e))
   }
 
