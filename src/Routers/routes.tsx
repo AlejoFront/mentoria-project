@@ -1,6 +1,6 @@
 import {Navigate} from 'react-router-dom';
 import {IRouterList} from './interface';
-import {LoginPage, HomePage, HomePrivate,PageNotFound } from 'Submodules';
+import {LoginPage, HomePage, HomePrivate, ProfilePrivate, PageNotFound } from 'Submodules';
 
 export const routerList: IRouterList = {
     public:  [
@@ -12,9 +12,14 @@ export const routerList: IRouterList = {
     ],
     private: [
         {path: '/', element: <HomePrivate />, isPrivate: true},
-        {path: '/admin', element: <HomePrivate />, isPrivate: true},
-        {path: '/admin/', element: <HomePrivate />, isPrivate: true},
-        {path: '/404', element: <PageNotFound/>, isPrivate: true},       
-        {path: '*', element: <Navigate to={'/404'} replace />, isPrivate: false}
+        {path: '/profile', element: <ProfilePrivate />, isPrivate: true}
+       
     ]
 }
+
+// {path: '/admin', element: <HomePrivate />, isPrivate: true},
+// {path: '/admin/', element: <HomePrivate />, isPrivate: true},
+// {path: '/profile', element: <ProfilePrivate />, isPrivate: true},
+// {path: '/profile/', element: <ProfilePrivate />, isPrivate: true},
+// {path: '/404', element: <PageNotFound/>, isPrivate: true},       
+// {path: '*', element: <Navigate to={'/404'} replace />, isPrivate: false}

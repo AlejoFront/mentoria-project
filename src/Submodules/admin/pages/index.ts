@@ -1,1 +1,2 @@
-export * from './homePrivate/homePrivate.page';
+export * from './home/homePrivate.page';
+export * from './profile/profilePrivate.page';

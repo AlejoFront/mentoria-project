@@ -1,4 +1,4 @@
-import {doc, getDoc, setDoc} from 'firebase/firestore';
+import {doc, getDoc, setDoc, updateDoc} from 'firebase/firestore';
 import {auth, db} from 'Config';
 import { IProfile } from 'Shared/utils/interfaces';
 
@@ -17,4 +17,11 @@ export const createUserByUID = async (data: {displayName: string, email: string,
 
 export const isExistProfileByUID = async (uid: string) => {
     return !!await getUserByUID('uid')
+}
+
+export const setProfile = async (data: {phone: string, rh: string}, uid: string) => {
+    return await updateDoc(doc(db, 'admin', uid), {
+        phone: data.phone,
+
+    });
 }

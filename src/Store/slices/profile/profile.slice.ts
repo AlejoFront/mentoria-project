@@ -27,5 +27,5 @@ export const {
     setProfile
 } = profileSlice.actions;
 
-export const selectsetProfileInfo = (state: RootState) => state;
+export const selectProfileInfo = (state: RootState) => state;
 export default profileSlice.reducer;
