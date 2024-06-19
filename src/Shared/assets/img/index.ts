@@ -1,1 +1,1 @@
-export {}
+export * from './google-icon.svg'
