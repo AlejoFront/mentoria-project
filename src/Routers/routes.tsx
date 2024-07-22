@@ -1,6 +1,7 @@
 import {Navigate} from 'react-router-dom';
 import {IRouterList} from './interface';
-import {LoginPage, HomePage, HomePrivate, ProfilePrivate, PageNotFound } from 'Submodules';
+import {LoginPage, HomePage, HomePrivate, ProfilePrivate, 
+    PageNotFound } from 'Submodules';
 
 export const routerList: IRouterList = {
     public:  [

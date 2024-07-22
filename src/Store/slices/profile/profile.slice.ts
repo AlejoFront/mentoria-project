@@ -6,7 +6,8 @@ const initialStateProfile: IProfile = {
     displayName: '',
     email: '',
     photoURL: '',
-    uid: ''
+    uid: '',
+    phone: ''
 }
 
 const profileSlice = createSlice({
@@ -14,10 +15,11 @@ const profileSlice = createSlice({
     initialState: initialStateProfile,
     reducers: {
         setProfile(state, action: PayloadAction<IProfile>) {
-            const { displayName, email, photoURL, uid } = action.payload;
+            const { displayName, email, photoURL, uid, phone } = action.payload;
             state.displayName = displayName;
             state.email = email;
             state.photoURL = photoURL;
+            state.phone = phone
             state.uid = uid;
         }
     }

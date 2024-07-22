@@ -1,6 +1,7 @@
 import {doc, getDoc, setDoc, updateDoc} from 'firebase/firestore';
 import {auth, db} from 'Config';
 import { IProfile } from 'Shared/utils/interfaces';
+import { clearData } from './general';
 
 export const getUserByUID = async (uid: string) => {
     const response = (await getDoc(doc(db, 'admin',uid))).data()!;
@@ -19,9 +20,19 @@ export const isExistProfileByUID = async (uid: string) => {
     return !!await getUserByUID('uid')
 }
 
-export const setProfile = async (data: {phone: string, rh: string}, uid: string) => {
+export const setProfilePhone = async (data: {phone: string}, uid: string) => {
     return await updateDoc(doc(db, 'admin', uid), {
-        phone: data.phone,
-
+        phone: data.phone
     });
+}
+
+export const setProfileAddress = async (data: {address: string}, uid: string) => {
+    return await updateDoc(doc(db, 'admin', uid), {
+        address: data.address
+    });
+}
+
+
+export const setProfile = async (data: {address?: string, phone?: string}, uid: string) => {
+    return await updateDoc(doc(db, 'admin', uid), clearData(data));
 }

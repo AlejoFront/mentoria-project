@@ -21,8 +21,8 @@ export const AppRoutes = () => {
         if(!!await isExistProfileByUID(user.uid)) {
           await createUserByUID(data,user.uid);
         }
-        const { displayName, email, photoURL } = await getUserByUID(user.uid);
-        dispatch(setProfile({email: email || '', displayName: displayName || '', photoURL: photoURL || '', uid: user.uid}));
+        const { displayName, email, photoURL, phone } = await getUserByUID(user.uid);
+        dispatch(setProfile({email: email || '', displayName: displayName || '', photoURL: photoURL || '', uid: user.uid, phone: phone || ''}));
         dispatch(setAuth({isAuthenticated: true, isLoading: false}));
         return; 
       }

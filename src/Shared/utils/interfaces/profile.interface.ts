@@ -3,4 +3,5 @@ export interface IProfile {
     displayName: string;
     email: string;
     photoURL: string;
+    phone: string;
 }
