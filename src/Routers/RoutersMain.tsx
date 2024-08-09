@@ -1,28 +1,54 @@
-import {FC} from 'react';
-import {Routes, Route, Navigate} from 'react-router-dom';
+import {FC, Suspense} from 'react';
+import {Routes, Route } from 'react-router-dom';
 import { routerList } from './routes';
+import PrivateRoutes from './PrivateRoutes';
+import PublicRoutes from './PublicRoutes';
+import { PageNotFound } from 'Submodules';
 interface IProps {
     isAthenticated: boolean;
 }
-const RoutersMain: FC<IProps> = ({isAthenticated}) => {
+const RoutersMain: FC<IProps> = ({isAthenticated}) => {  
+
   if(isAthenticated) {
     return (
         <Routes>
             {
-                routerList.private.map((router, index) => {
-                    return <Route key={index} path={router.path} element={router.element} />
+                routerList.private.map(({to, Component}, index) => {
+                    return <Route 
+                                key={index} 
+                                path={to}
+                                element={
+                                    <PrivateRoutes isAuthenticated={isAthenticated}>
+                                        <Suspense fallback='Cargando pagina...'>
+                                            <Component />
+                                        </Suspense>
+                                    </PrivateRoutes>
+                                } 
+                            />
                 })
             }
+            <Route path='*' element={<PageNotFound />} />
         </Routes>
     )
   }
   return (
         <Routes>
             {
-                routerList.public.map((router, index) => {
-                    return <Route key={index} path={router.path} element={router.element} />
+                routerList.public.map(({to, Component}, index) => {
+                    return <Route 
+                    key={index} 
+                    path={to}
+                    element={
+                        <PublicRoutes isAuthenticated={isAthenticated}>
+                            <Suspense fallback='Cargando pagina...'>
+                                <Component />
+                            </Suspense>
+                        </PublicRoutes>
+                    } 
+                />
                 })
             }
+            <Route path='*' element={<PageNotFound />} />
         </Routes>
   )
 }

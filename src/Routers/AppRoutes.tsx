@@ -13,9 +13,8 @@ export const AppRoutes = () => {
   const {Auth: {isAuthenticated, isLoading}} = useAppSelector(selectAuthInfo);
 
   useEffect(() => {
-    
+    dispatch(setAuth({isAuthenticated: false, isLoading: true}));
     onAuthStateChanged(auth, async user => {
-      dispatch(setAuth({isAuthenticated: false, isLoading: true}));
       if(user) {
         const data = { displayName: user.displayName!,email: user.email!, photoURL: user.photoURL!};
         if(!!await isExistProfileByUID(user.uid)) {

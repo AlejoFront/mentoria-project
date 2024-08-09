@@ -1,20 +1,30 @@
-import {Navigate} from 'react-router-dom';
+import {lazy} from 'react';
 import {IRouterList} from './interface';
-import {LoginPage, HomePage, HomePrivate, ProfilePrivate, 
-    PageNotFound } from 'Submodules';
+import { PageNotFound } from 'Submodules';
+
+const LazyPublicHome = lazy(() => import('Submodules/public/pages/home/home.page'));
+const LazyPublicLogin = lazy(() => import('Submodules/auth/pages/login/login.page'));
+
+
+const LazyPrivateHome = lazy(() => import('Submodules/admin/pages/home/homePrivate.page'));
+const LazyPrivateProfile = lazy(() => import('Submodules/admin/pages/profile/profilePrivate.page'));
+
 
 export const routerList: IRouterList = {
-    public:  [
-        {path: '/', element: <HomePage />, isPrivate: false},
-        {path: '/home', element: <HomePage />, isPrivate: false},
-        {path: '/auth/', element: <LoginPage />, isPrivate: false},
-        {path: '/auth/login', element: <LoginPage />, isPrivate: false},
-        {path: '*', element: <Navigate to={'/'} replace />, isPrivate: false}
+    public: [
+        { to: '/', path: '', Component: LazyPublicHome, isPrivate: false },
+        { to: '/home', path: 'home', Component: LazyPublicHome, isPrivate: false },
+        { to: '/auth/', path: 'auth', Component: LazyPublicLogin, isPrivate: false },
+        { to: '/auth/login', path: 'auth/login', Component: LazyPublicLogin, isPrivate: false },
     ],
     private: [
-        {path: '/', element: <HomePrivate />, isPrivate: true},
-        {path: '/profile', element: <ProfilePrivate />, isPrivate: true}
-       
+        { to: '/', path: '/', Component: LazyPrivateHome, isPrivate: true },
+        { to: '/home', path: '/home', Component: LazyPrivateHome, isPrivate: true },
+        { to: '/profile', path: '/profile', Component: LazyPrivateProfile, isPrivate: true },
+    ],
+    shared: [
+        { to: '/404', path: '/page-not-found', Component: PageNotFound, isPrivate: false }
+        
     ]
 }
 

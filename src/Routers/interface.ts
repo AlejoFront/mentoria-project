@@ -1,18 +1,21 @@
+import {LazyExoticComponent} from 'react';
 import {LazyRouteFunction, RouteObject} from 'react-router-dom';
+export type JSXComponent= () => JSX.Element;
 export interface IRouterList {
     public: IRouter[];
     private: IRouter[];
+    shared: IRouter[];
 }
 
 
 export interface IRouter{
-    to?: string;
+    to: string;
     path:string;
     className?:string;
     classLink?:string;
     icon?:string;
     lazy?: LazyRouteFunction<RouteObject>;
-    element?: JSX.Element;
+    Component: LazyExoticComponent<JSXComponent> | JSXComponent;
     name?:string;
     isPrivate: boolean;
 }
