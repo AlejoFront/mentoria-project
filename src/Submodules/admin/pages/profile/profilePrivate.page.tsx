@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import {setProfile, setProfileAddress } from 'Shared/utils/helpers';
 import {useAppSelector} from 'Store/hooks';
 import {selectProfileInfo} from 'Store/slices'
@@ -11,7 +12,8 @@ export const ProfilePrivate = () => {
   const [profesion, setProfesion] = useState()
   return (
     <>
-
+    <Link to={'/'} >home</Link>
+    <Link to={'/new-user'} >agregar usuario</Link>
       <ul>
         <li>Nombre: {displayName}</li>
         <li>Email: {email}</li>

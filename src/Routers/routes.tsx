@@ -4,7 +4,7 @@ import { PageNotFound } from 'Submodules';
 
 const LazyPublicHome = lazy(() => import('Submodules/public/pages/home/home.page'));
 const LazyPublicLogin = lazy(() => import('Submodules/auth/pages/login/login.page'));
-
+const LazyPublicRegister = lazy(() => import('Submodules/auth/pages/register/register.page'));
 
 const LazyPrivateHome = lazy(() => import('Submodules/admin/pages/home/homePrivate.page'));
 const LazyPrivateProfile = lazy(() => import('Submodules/admin/pages/profile/profilePrivate.page'));
@@ -15,7 +15,8 @@ export const routerList: IRouterList = {
         { to: '/', path: '', Component: LazyPublicHome, isPrivate: false },
         { to: '/home', path: 'home', Component: LazyPublicHome, isPrivate: false },
         { to: '/auth/', path: 'auth', Component: LazyPublicLogin, isPrivate: false },
-        { to: '/auth/login', path: 'auth/login', Component: LazyPublicLogin, isPrivate: false },
+        { to: '/auth/login', path: 'auth/login', Component: LazyPublicLogin, isPrivate: false },        
+        { to: '/auth/register', path: 'auth/register', Component: LazyPublicRegister, isPrivate: false },
     ],
     private: [
         { to: '/', path: '/', Component: LazyPrivateHome, isPrivate: true },

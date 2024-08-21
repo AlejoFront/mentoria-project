@@ -1,18 +1,17 @@
 import {doc, getDoc, setDoc, updateDoc} from 'firebase/firestore';
-import {auth, db} from 'Config';
-import { IProfile } from 'Shared/utils/interfaces';
+import {db} from 'Config';
 import { clearData } from './general';
 
 export const getUserByUID = async (uid: string) => {
-    const response = (await getDoc(doc(db, 'admin',uid))).data()!;
+    const response = (await getDoc(doc(db, 'users',uid))).data()!;
     return await response;
 }
 
 export const createUserByUID = async (data: {displayName: string, email: string, photoURL: string},uid: string) => {
-    return await setDoc(doc(db, 'admin', uid), {
-       displayName: data.displayName,
+    return await setDoc(doc(db, 'users', uid), {
+       displayName: data.displayName || '',
        email: data.email,
-       photoURL: data.photoURL
+       photoURL: data.photoURL || ''
       });
 }
 
@@ -21,18 +20,18 @@ export const isExistProfileByUID = async (uid: string) => {
 }
 
 export const setProfilePhone = async (data: {phone: string}, uid: string) => {
-    return await updateDoc(doc(db, 'admin', uid), {
+    return await updateDoc(doc(db, 'users', uid), {
         phone: data.phone
     });
 }
 
 export const setProfileAddress = async (data: {address: string}, uid: string) => {
-    return await updateDoc(doc(db, 'admin', uid), {
+    return await updateDoc(doc(db, 'users', uid), {
         address: data.address
     });
 }
 
 
 export const setProfile = async (data: {address?: string, phone?: string}, uid: string) => {
-    return await updateDoc(doc(db, 'admin', uid), clearData(data));
+    return await updateDoc(doc(db, 'users', uid), clearData(data));
 }

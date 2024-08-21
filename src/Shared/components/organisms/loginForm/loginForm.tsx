@@ -3,6 +3,7 @@
   import Input from 'Shared/components/atoms/input/input';
   import GoogleButton from 'Shared/components/atoms/googleButton/googleButton';
   import './loginForm.scss';
+import { Link } from 'react-router-dom';
 
  
 type FormValues = {
@@ -13,9 +14,10 @@ type FormValues = {
 type LoginFormProps = {
   onSubmit: (data: FormValues) => void;
   onGoogleLogin: () => void;
+  isLogin: boolean;
 };
 
-const LoginForm: React.FC<LoginFormProps> = ({ onSubmit, onGoogleLogin }) => {
+const LoginForm: React.FC<LoginFormProps> = ({ onSubmit, onGoogleLogin, isLogin }) => {
   const methods = useForm<FormValues>({ mode: 'onBlur' });
 
   const { handleSubmit, formState: { errors } } = methods;
@@ -45,7 +47,8 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit, onGoogleLogin }) => {
           placeholder="Escribe aquí tu contraseña"
           isError={!!errors.password}
         />
-        <button type="submit" className="login-button">Inciar sesión</button>
+        <button type="submit" className="login-button">{isLogin ? 'Inciar sesión': 'Registrarme'}</button>
+        <Link to={isLogin ? '/auth/register':'/auth/login'}>{isLogin ? 'registrarse' :'Iniciar sesion'}</Link>
       </form>
     </FormProvider>
   );

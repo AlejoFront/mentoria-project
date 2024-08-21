@@ -4,15 +4,17 @@ import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import {isExistProfileByUID, createUserByUID} from 'Shared/utils'
 import LoginForm from 'Shared/components/organisms/loginForm/loginForm';
 import './login.page.scss';
+import { useNavigate } from 'react-router-dom';
 
 const provider = new GoogleAuthProvider();
 export const LoginPage = () => {
-
+  const navigate = useNavigate();
 
   const onLoginWithEmail = (data: { email: string; password: string }) => {
     signInWithEmailAndPassword(auth, data.email, data.password)
       .then((response) => {
         /// console.log(response)
+        navigate('/')
       })
       .catch(e => console.log(e))
   }
@@ -28,7 +30,7 @@ export const LoginPage = () => {
 
   return (
     <section className='login'>
-      <LoginForm onSubmit={onLoginWithEmail} onGoogleLogin={onSignInGoogle}/>
+      <LoginForm isLogin={true} onSubmit={onLoginWithEmail} onGoogleLogin={onSignInGoogle}/>
     </section>
   )
 }
