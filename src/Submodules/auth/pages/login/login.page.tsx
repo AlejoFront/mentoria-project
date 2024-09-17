@@ -1,8 +1,8 @@
 import {signInWithEmailAndPassword} from 'firebase/auth';
-import {auth} from 'Config';
+import {auth} from 'config';
 import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
-import {isExistProfileByUID, createUserByUID} from 'Shared/utils'
-import LoginForm from 'Shared/components/organisms/loginForm/loginForm';
+import {isExistProfileByUID, createUserByUID} from 'shared/utils'
+import {LoginForm} from 'shared/components';
 import './login.page.scss';
 import { useNavigate } from 'react-router-dom';
 

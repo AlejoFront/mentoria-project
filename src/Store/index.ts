@@ -1,6 +1,6 @@
 import {AnyAction, configureStore} from '@reduxjs/toolkit';
-import Auth from 'Store/slices/auth/auth.slice';
-import Profile from 'Store/slices/profile/profile.slice';
+import Auth from 'store/slices/auth/auth.slice';
+import Profile from 'store/slices/profile/profile.slice';
 export * from './hooks';
 
 

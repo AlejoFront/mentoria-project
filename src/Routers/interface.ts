@@ -12,10 +12,12 @@ export interface IRouter{
     to: string;
     path:string;
     className?:string;
+    classIcon?: string;
     classLink?:string;
     icon?:string;
     lazy?: LazyRouteFunction<RouteObject>;
     Component: LazyExoticComponent<JSXComponent> | JSXComponent;
     name?:string;
     isPrivate: boolean;
+    enabled: boolean;
 }

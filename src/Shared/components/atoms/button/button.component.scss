@@ -1,0 +1,11 @@
+@import 'shared/assets/sass/styles.sass';
+.a-btn{
+    &--disabled{
+        background-color: #14740f9e !important;
+        border-color: #14740f9e !important;
+        color: $white;
+        &:hover{
+            cursor: not-allowed;
+            }
+    }
+}

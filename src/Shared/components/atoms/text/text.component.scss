@@ -1,0 +1,27 @@
+@import 'shared/assets/sass/styles.sass';
+.title{
+    text-align: center;
+    font-weight: lighter;
+    color: $primary-color;
+    margin-bottom: 1rem;
+}
+.text-message-alert{
+    font-size: 9px;
+    font-weight: lighter;
+    &--success{
+        color: $success-color
+    }
+    &--danger{
+        color: $danger-color
+    }
+    &--warrning{
+        color: $warnning-color;
+    }
+}
+.text-center{
+    text-align: center;
+}
+.text-left-3{
+    width: 85%;
+    margin: 0 auto;
+}

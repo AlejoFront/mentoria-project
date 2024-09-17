@@ -3,7 +3,7 @@ import {Routes, Route } from 'react-router-dom';
 import { routerList } from './routes';
 import PrivateRoutes from './PrivateRoutes';
 import PublicRoutes from './PublicRoutes';
-import { PageNotFound } from 'Submodules';
+import { PageNotFound } from 'submodules';
 interface IProps {
     isAthenticated: boolean;
 }

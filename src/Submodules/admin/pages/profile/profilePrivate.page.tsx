@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom';
-import {setProfile, setProfileAddress } from 'Shared/utils/helpers';
-import {useAppSelector} from 'Store/hooks';
-import {selectProfileInfo} from 'Store/slices'
+import {setProfile, setProfileAddress } from 'shared/utils/helpers';
+import {useAppSelector} from 'store/hooks';
+import {selectProfileInfo} from 'store/slices'
 import { useState } from 'react';
+import { Layout } from 'shared/components';
 
 export const ProfilePrivate = () => {
   const {Profile: {displayName,email,photoURL, uid}} = useAppSelector(selectProfileInfo);
@@ -11,9 +12,7 @@ export const ProfilePrivate = () => {
   const [rh, setRh] = useState('')
   const [profesion, setProfesion] = useState()
   return (
-    <>
-    <Link to={'/'} >home</Link>
-    <Link to={'/new-user'} >agregar usuario</Link>
+    <Layout headerTitle='Perfil usuario'>
       <ul>
         <li>Nombre: {displayName}</li>
         <li>Email: {email}</li>
@@ -28,7 +27,7 @@ export const ProfilePrivate = () => {
         <br />
         <button onClick={() => setProfile({address, phone}, uid)}>Agregar Informacion</button>
       </div>
-    </>
+    </Layout>
   )
 }
 

@@ -1,0 +1,63 @@
+@import 'shared/assets/sass/styles.sass';
+.light-box{
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, .5);
+    transition: transform .3s ease-in-out;
+    width: 100%;
+    min-height: 100vh;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: scale(0);
+    &--show{
+        transform: scale(1);
+    }
+}
+
+.modal{
+    height: 100vh;
+    background: #FFF;
+    overflow: scroll;
+    @include tablet{
+        height: 90vh;
+        width: 90vw;
+    }
+    @include laptop{
+        width: 70vw;
+    }
+    @include desktop{
+        width: 40vw;
+    }
+    @include desktopLarge{
+        width: 500px;
+    }
+    &::-webkit-scrollbar{
+        display: none;
+    }
+    &-figure{
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+    &-img{
+        margin-top: 5px;
+        width: auto;
+        height: 200px;
+    }
+    &-description{
+        width: 100%;
+        text-align: justify;
+        padding: 10px;
+    }
+}
+
+.icon-right{
+    font-size: 25px;
+    margin-top: 9px;
+    position: relative;
+    left: 94%;
+    cursor: pointer;
+}

@@ -1,0 +1,81 @@
+@import 'shared/assets/sass/styles.sass';
+.container{
+    width: 100%;
+    min-height: 100vh;
+    .header{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        min-height: 10vh;
+        background: $primary-color;
+        padding: 10px 20px;
+        .header_name{
+            color: $white;
+        }
+        .label{
+            cursor: pointer;
+        }
+        .a-btn--danger{
+            color: $white;
+            padding: 3px 9px;
+        }
+        &-mobile{
+            display: contents;
+            @include laptop{
+                display: none;
+            }
+        }
+        &-desktop{
+            display: none;
+            @include laptop{
+                display: contents;
+            }
+        }
+    }
+
+    .container__checkbox{
+        display: none;
+        &:checked ~ .container__nav-items{
+            transform: unset;
+        }
+    }
+
+    .container__dashboard{
+        background: $gray-dark;
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+        height: 90vh;
+        min-height: 86vh;
+        @include laptop{
+            height: 90%;
+        }
+        &__contents{
+            background: $white;
+            padding: 20px;
+            height: 90vh;
+            box-shadow: 0px 3px 5px 0px #a8a6a6;
+            overflow-y: auto;
+            margin: 0 auto;
+            width: 100%;
+            &::-webkit-scrollbar{
+                display: none;
+            }
+            @include tablet{
+                width: 460px;
+            }
+            @include laptop{
+                width: 600px;
+                height: 83vh;
+            }
+            @include desktop{
+                width: 850px;
+            }
+            @include desktopLarge{
+                width: 1200px;
+            }
+        }
+    }
+
+}

@@ -1,8 +1,7 @@
   import React from 'react';
   import { useForm, FormProvider } from 'react-hook-form';
-  import Input from 'Shared/components/atoms/input/input';
-  import GoogleButton from 'Shared/components/atoms/googleButton/googleButton';
-  import './loginForm.scss';
+  import {GoogleButton, Input} from 'shared/components';
+  import './loginForm.component.scss';
 import { Link } from 'react-router-dom';
 
  
@@ -17,7 +16,7 @@ type LoginFormProps = {
   isLogin: boolean;
 };
 
-const LoginForm: React.FC<LoginFormProps> = ({ onSubmit, onGoogleLogin, isLogin }) => {
+export const LoginForm: React.FC<LoginFormProps> = ({ onSubmit, onGoogleLogin, isLogin }) => {
   const methods = useForm<FormValues>({ mode: 'onBlur' });
 
   const { handleSubmit, formState: { errors } } = methods;
@@ -36,16 +35,16 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit, onGoogleLogin, isLogin 
         <Input
           name="email"
           type="email"
-          label="Correo electrónico"
+          // label="Correo electrónico"
           placeholder="example@example.com"
-          isError={!!errors.email}
+          // isError={!!errors.email}
         />
         <Input
           name="password"
           type="password"
-          label="Contraseña"
+          // label="Contraseña"
           placeholder="Escribe aquí tu contraseña"
-          isError={!!errors.password}
+          // isError={!!errors.password}
         />
         <button type="submit" className="login-button">{isLogin ? 'Inciar sesión': 'Registrarme'}</button>
         <Link to={isLogin ? '/auth/register':'/auth/login'}>{isLogin ? 'registrarse' :'Iniciar sesion'}</Link>

@@ -1,16 +1,16 @@
 import { useEffect } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import {onAuthStateChanged} from 'firebase/auth'
-import {useAppDispatch, useAppSelector} from 'Store/hooks';
-import {selectAuthInfo, setAuth,setProfile} from 'Store/slices';
-import {getUserByUID,isExistProfileByUID,createUserByUID} from 'Shared/utils'
+import {useAppDispatch, useAppSelector} from 'store/hooks';
+import {selectAuthInfo, setAuth,setProfile} from 'store/slices';
+import {getUserByUID,isExistProfileByUID,createUserByUID} from 'shared/utils';
 import RoutersMain from './RoutersMain';
-import { auth } from 'Config';
+import { auth } from 'config';
 
 
 export const AppRoutes = () => {
   const dispatch = useAppDispatch();
-  const {Auth: {isAuthenticated, isLoading}} = useAppSelector(selectAuthInfo);
+  const {isAuthenticated, isLoading} = useAppSelector(selectAuthInfo);
 
   useEffect(() => {
     dispatch(setAuth({isAuthenticated: false, isLoading: true}));

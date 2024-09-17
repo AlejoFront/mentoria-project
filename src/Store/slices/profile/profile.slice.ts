@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import {RootState} from 'Store';
-import {IProfile} from 'Shared/utils/interfaces';
+import {RootState} from 'store';
+import {IProfile} from 'shared/utils/interfaces';
 
 const initialStateProfile: IProfile = {
     displayName: '',

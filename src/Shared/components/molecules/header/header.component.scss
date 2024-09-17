@@ -1,0 +1,17 @@
+@import 'shared/assets/sass/styles.sass';
+
+.item{
+    &-nav{
+        color: $white;
+        list-style: none;
+        text-decoration: none;
+        display: flex;
+        justify-content: center;
+        padding: 10px 0;
+    }
+}
+.header-desktop{
+    .active{
+        color: $primary-color-dark !important
+    }
+}

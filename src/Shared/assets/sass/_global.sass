@@ -1,0 +1,69 @@
+.a-btn
+    padding: 10px 0
+    border: none
+    outline: none
+    font-size: 16px
+    text-align: center
+    text-decoration: none
+
+    &--success
+        cursor: pointer
+        padding: 5px
+        background: $success-color
+        color: $white
+        border: 1px solid $success-color
+        font-size: 18px
+        transition: .5s ease all
+        &--disable
+            background-color: $success-disable-color !important
+            border-color: $success-disable-color !important
+            color: $white
+            &:hover
+                cursor: not-allowed
+
+    &--danger
+        cursor: pointer
+        padding: 5px
+        background: $danger-color
+        color: $white
+        border: 1px solid $danger-color
+        font-size: 18px
+        transition: .5s ease all
+        &:hover
+            background: $danger-color
+            color: $white
+    &--warnning
+        cursor: pointer
+        padding: 5px
+        background: $warnning-color
+        color: $white
+        border: 1px solid $warnning-color
+        font-size: 18px
+        transition: .5s ease all
+        &:hover
+            background: $warnning-color
+            color: $white
+    &--info
+        cursor: pointer
+        padding: 5px
+        background: $info-color
+        color: $white
+        border: 1px solid $info-color
+        font-size: 18px
+        transition: .5s ease all
+        &:hover
+            background: $info-color
+            color: $white
+i.fas,i.fab,i.fa
+    margin-right: .5rem
+
+.line-group
+    border-top: 2px solid $gray-line
+
+.figure-load
+    display: flex
+    justify-content: center
+    padding: .2rem
+    margin-top: 1rem
+.img-load
+    width: 20px

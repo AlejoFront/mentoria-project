@@ -1,5 +1,5 @@
 import {doc, getDoc, setDoc, updateDoc} from 'firebase/firestore';
-import {db} from 'Config';
+import {db} from 'config';
 import { clearData } from './general';
 
 export const getUserByUID = async (uid: string) => {

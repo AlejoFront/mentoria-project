@@ -1,30 +1,30 @@
 import {lazy} from 'react';
 import {IRouterList} from './interface';
-import { PageNotFound } from 'Submodules';
+import { PageNotFound } from 'submodules';
 
-const LazyPublicHome = lazy(() => import('Submodules/public/pages/home/home.page'));
-const LazyPublicLogin = lazy(() => import('Submodules/auth/pages/login/login.page'));
-const LazyPublicRegister = lazy(() => import('Submodules/auth/pages/register/register.page'));
+const LazyPublicHome = lazy(() => import('submodules/public/pages/home/home.page'));
+const LazyPublicLogin = lazy(() => import('submodules/auth/pages/login/login.page'));
+const LazyPublicRegister = lazy(() => import('submodules/auth/pages/register/register.page'));
 
-const LazyPrivateHome = lazy(() => import('Submodules/admin/pages/home/homePrivate.page'));
-const LazyPrivateProfile = lazy(() => import('Submodules/admin/pages/profile/profilePrivate.page'));
+const LazyPrivateHome = lazy(() => import('submodules/admin/pages/home/homePrivate.page'));
+const LazyPrivateProfile = lazy(() => import('submodules/admin/pages/profile/profilePrivate.page'));
 
 
 export const routerList: IRouterList = {
     public: [
-        { to: '/', path: '', Component: LazyPublicHome, isPrivate: false },
-        { to: '/home', path: 'home', Component: LazyPublicHome, isPrivate: false },
-        { to: '/auth/', path: 'auth', Component: LazyPublicLogin, isPrivate: false },
-        { to: '/auth/login', path: 'auth/login', Component: LazyPublicLogin, isPrivate: false },        
-        { to: '/auth/register', path: 'auth/register', Component: LazyPublicRegister, isPrivate: false },
+        { enabled: true, to: '/', path: '', Component: LazyPublicHome, isPrivate: false },
+        { enabled: true, to: '/home', path: 'home', Component: LazyPublicHome, isPrivate: false },
+        { enabled: true, to: '/auth/', path: 'auth', Component: LazyPublicLogin, isPrivate: false },
+        { enabled: true, to: '/auth/login', path: 'auth/login', Component: LazyPublicLogin, isPrivate: false },        
+        { enabled: true, to: '/auth/register', path: 'auth/register', Component: LazyPublicRegister, isPrivate: false },
     ],
     private: [
-        { to: '/', path: '/', Component: LazyPrivateHome, isPrivate: true },
-        { to: '/home', path: '/home', Component: LazyPrivateHome, isPrivate: true },
-        { to: '/profile', path: '/profile', Component: LazyPrivateProfile, isPrivate: true },
+        { enabled: true, classIcon: 'fas fa-home', name: 'home', to: '/', path: '/', Component: LazyPrivateHome, isPrivate: true },
+        { enabled: true, classIcon: 'fas fa-home', name: 'home', to: '/home', path: '/home', Component: LazyPrivateHome, isPrivate: true },
+        { enabled: true, classIcon: 'fas fa-id-card-alt', name: 'profile', to: '/profile', path: '/profile', Component: LazyPrivateProfile, isPrivate: true },
     ],
     shared: [
-        { to: '/404', path: '/page-not-found', Component: PageNotFound, isPrivate: false }
+        { enabled: true, to: '/404', path: '/page-not-found', Component: PageNotFound, isPrivate: false }
         
     ]
 }
