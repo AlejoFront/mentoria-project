@@ -1,0 +1,45 @@
+.home {
+  width: 100%;
+  margin-top: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @media (min-width: 768px) {
+    width: 60%;
+  }
+
+  h1 {
+    text-align: center;
+    font-weight: 800;
+    margin: 20px 0 0 0;
+
+    span {
+      color: #6B46C1;
+    }
+  }
+
+  p {
+    text-align: center;
+    padding: 0 5%;
+    margin: 30px 0 40px 0;
+  }
+
+  a {
+    background-color: #6B46C1;
+    display: inline-flex;
+    min-height: 50px;
+    min-width: 200px;
+    border-radius: 12px;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: darken(#6B46C1, 10%);
+    }
+  }
+}

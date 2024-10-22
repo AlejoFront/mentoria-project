@@ -1,4 +1,6 @@
-import { AppRoutes } from './routers'
-export const App = () => <AppRoutes/>
+import { AppRoutes } from "./routers";
+import "./shared/assets/sass/globals.scss";
+
+export const App = () => <AppRoutes />;
 
 export default App;

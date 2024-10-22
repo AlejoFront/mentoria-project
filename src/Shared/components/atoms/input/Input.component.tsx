@@ -1,28 +1,40 @@
-import { CSSProperties, FC, HTMLInputTypeAttribute } from 'react';
-import './input.component.scss';
-interface Props {
-    type: HTMLInputTypeAttribute;
-    id?: string;
-    className?: string;
-    placeholder?: string;
-    value?: string | number;
-    name?: string;
-    onChange?: any;
-    style?: CSSProperties;
-}
+import React, { HTMLInputTypeAttribute } from "react";
+import { useFormContext } from "react-hook-form";
+import classNames from "classnames";
+import "./input.component.scss";
 
-export const Input: FC<Props> = ({ type, id, className, placeholder, value, name, style, onChange }) => {
-    return (
-        <input
-            type={type}
-            id={id}
-            className={className}
-            placeholder={placeholder}
-            value={value}
-            name={name}
-            style={style}
-            onChange={onChange}
-            autoComplete='off'
-        />
-    )
-}
+type InputProps = {
+  type: HTMLInputTypeAttribute;
+  name: string;
+  label: string;
+  placeholder?: string;
+  className?: string;
+  isError?: boolean;
+};
+
+export const Input: React.FC<InputProps> = ({
+  name,
+  label,
+  type = "text",
+  placeholder,
+  className,
+  isError,
+}) => {
+  const { register } = useFormContext();
+
+  const inputClass = classNames("input-wrapper", className, {
+    "input-wrapper--error": isError,
+  });
+
+  return (
+    <div className={inputClass}>
+      <label htmlFor={name}>{label}</label>
+      <input
+        id={name}
+        type={type}
+        placeholder={placeholder}
+        {...register(name)}
+      />
+    </div>
+  );
+};

@@ -1,11 +1,7 @@
-
+import { Layout } from "shared/components/templates/layout/layout";
 
 export const PageNotFound = () => {
-  return (
-    <>
-       404
-    </>
-  )
-}
+  return <Layout>404</Layout>;
+};
 
-export default PageNotFound
+export default PageNotFound;
