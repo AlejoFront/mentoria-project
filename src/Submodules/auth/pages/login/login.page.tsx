@@ -35,6 +35,7 @@ export const LoginPage = () => {
           photoURL: user.photoURL!,
         };
         await createUserByUID(data, user.uid);
+        navigate("/");
       })
       .catch((e) => console.log(e));
   };
