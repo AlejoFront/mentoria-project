@@ -1,7 +1,8 @@
-import React from "react";
-import { FormProvider, useForm } from "react-hook-form";
-import { GoogleButton, Input } from "shared/components/atoms";
-import "./loginForm.component.scss";
+import React from 'react';
+import { FormProvider, useForm } from 'react-hook-form';
+import { GoogleButton, Input } from 'shared/components/atoms';
+import {useLanguage} from 'shared/context';
+import './loginForm.component.scss';
 
 type FormValues = {
   email: string;
@@ -17,6 +18,7 @@ export const LoginForm: React.FC<LoginFormProps> = ({
   onSubmit,
   onGoogleLogin,
 }) => {
+  const {language} =  useLanguage();
   const methods = useForm<FormValues>({ mode: "onBlur" });
 
   const {
@@ -30,21 +32,21 @@ export const LoginForm: React.FC<LoginFormProps> = ({
         <GoogleButton onClick={onGoogleLogin} />
         <div className="separator">O</div>
         <Input
-          name="email"
+          name={language.shared.components.loginForm.email.name}
           type="email"
-          label="Correo electrónico"
-          placeholder="example@example.com"
+          label={language.shared.components.loginForm.email.label}
+          placeholder={language.shared.components.loginForm.email.placeholder}
           isError={!!errors.email}
         />
         <Input
-          name="password"
+          name={language.shared.components.loginForm.password.name}
           type="password"
-          label="Contraseña"
-          placeholder="Escribe aquí tu contraseña"
+          label={language.shared.components.loginForm.password.label}
+          placeholder={language.shared.components.loginForm.password.placeholder}
           isError={!!errors.password}
         />
         <button type="submit" className="login-button">
-          Inciar sesión
+        {language.shared.components.loginForm.button.text}
         </button>
       </form>
     </FormProvider>

@@ -1,18 +1,18 @@
-import { Link } from "react-router-dom";
-import { Layout } from "shared/components/templates/layout/layout";
-import "./home.page.scss";
+import { Link } from 'react-router-dom';
+import { Layout } from 'shared/components';
+import {useLanguage} from 'shared/context';
+
+import './home.page.scss';
 
 export const HomePage = () => {
+  const {language} =  useLanguage();
   return (
     <Layout className="home">
       <h1>
-        Gestión avanzada para el <span>control total</span>
+        {language.public.pages.home.title.text1} <span>{language.public.pages.home.title.text2}</span>
       </h1>
-      <p>
-        Accede a tu panel de usuario para gestionar tus preferencias, verificar
-        tu historial y mantener el control total en un solo lugar.
-      </p>
-      <Link to="/auth">Inicia sesión ahora</Link>
+      <p>{language.public.pages.home.description}</p>
+      <Link to="/auth">{language.public.pages.home.button }</Link>
     </Layout>
   );
 };

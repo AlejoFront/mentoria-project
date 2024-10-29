@@ -1,0 +1,38 @@
+{
+    "shared": {
+        "components": {
+            "loginForm": {
+                "email": {
+                    "name": "email",
+                    "label": "Correo electrónico",
+                    "placeholder": "example@example.com"
+                },
+                "password": {
+                    "name": "password",
+                    "label": "Contraseña",
+                    "placeholder": "Escribe aquí tu contraseña"
+                },
+                "button": {
+                    "text": "Inciar sesión"
+                }
+            }
+        }
+    },
+    "404":{},
+    "admin": {},
+    "auth":{},
+    "public": {
+        "components": {},
+        "pages": {
+            "contacts": {},
+            "home": {
+                "title": {
+                    "text1": "Advanced management for",
+                    "text2": "full control"
+                },
+                "description": "Access your user panel to manage your preferences, check your history and maintain complete control in one place.",
+                "button": "Sign in now"
+            }
+        }
+    }
+}
