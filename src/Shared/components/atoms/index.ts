@@ -7,3 +7,4 @@ export * from "./itemLink/itemLink.component";
 export * from "./item/item.component";
 export * from "./loading/loading.component";
 export * from "./googleButton/googleButton.component";
+export * from "./shimmer/shimmer.component";
