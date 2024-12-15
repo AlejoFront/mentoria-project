@@ -1,38 +1,122 @@
 {
-    "shared": {
-        "components": {
-            "loginForm": {
-                "email": {
-                    "name": "email",
-                    "label": "Correo electrónico",
-                    "placeholder": "example@example.com"
-                },
-                "password": {
-                    "name": "password",
-                    "label": "Contraseña",
-                    "placeholder": "Escribe aquí tu contraseña"
-                },
-                "button": {
-                    "text": "Inciar sesión"
-                }
-            }
-        }
+  "shared": {
+    "languageSelector": {
+      "label": "Select your language",
+      "default": "en",
+      "en": "English",
+      "es": "Spanish"
     },
-    "404":{},
-    "admin": {},
-    "auth":{},
-    "public": {
-        "components": {},
-        "pages": {
-            "contacts": {},
-            "home": {
-                "title": {
-                    "text1": "Advanced management for",
-                    "text2": "full control"
-                },
-                "description": "Access your user panel to manage your preferences, check your history and maintain complete control in one place.",
-                "button": "Sign in now"
-            }
-        }
+    "menu": {
+      "admin": {
+        "home": "Home",
+        "profile": "Profile"
+      },
+      "noLoggedIn": {
+        "login": "Login",
+        "register": "Register"
+      }
     }
+  },
+  "404": {
+    "title": "404",
+    "description": "Oops... It seems the page you are looking for does not exist.",
+    "link": "Go back to the homepage"
+  },
+  "admin": {},
+  "auth": {
+    "login": {
+      "title": "Log in",
+      "description": "Log in to access your account and have everything you need at your fingertips.",
+      "email": {
+        "name": "email",
+        "label": "Email",
+        "placeholder": "example@example.com"
+      },
+      "password": {
+        "name": "password",
+        "label": "Password",
+        "placeholder": "Enter your password here"
+      },
+      "button": {
+        "text": "Log in"
+      },
+      "googleButton": {
+        "text": "Log in with Google"
+      },
+      "redirectMessage": {
+        "message": "Don't have an account?",
+        "link": "Sign up"
+      }
+    },
+    "register": {
+      "title": "Create account",
+      "description": "Sign up to start using all the features of your user panel.",
+      "email": {
+        "name": "email",
+        "label": "Email",
+        "placeholder": "example@example.com"
+      },
+      "password": {
+        "name": "password",
+        "label": "Password",
+        "placeholder": "Enter your password here"
+      },
+      "button": {
+        "text": "Create account"
+      },
+      "googleButton": {
+        "text": "Sign up with Google"
+      },
+      "redirectMessage": {
+        "message": "Already have an account?",
+        "link": "Log in"
+      }
+    }
+  },
+  "profilePrivate": {
+    "labels": {
+      "phone": "Phone",
+      "address": "Address",
+      "rh": "Blood group (RH)",
+      "profession": "Profession"
+    },
+    "descriptions": {
+      "phone": "Include your country code if necessary.",
+      "address": "Enter the full address, including city and country.",
+      "rh": "Indicate your blood group and RH factor.",
+      "profession": "Example: Software Engineer, Doctor, etc."
+    },
+    "placeholders": {
+      "phone": "Enter your phone number",
+      "address": "Enter your address",
+      "rh": "Example: O+, A-",
+      "profession": "Enter your profession"
+    },
+    "buttons": {
+      "edit": "Edit Information",
+      "save": "Save Information",
+      "cancel": "Cancel",
+      "logout": "Log Out"
+    },
+    "messages": {
+      "noPhone": "Phone not registered",
+      "noAddress": "Address not registered",
+      "noRh": "RH not registered",
+      "noProfession": "Profession not registered"
+    }
+  },
+  "public": {
+    "components": {},
+    "pages": {
+      "contacts": {},
+      "home": {
+        "title": {
+          "text1": "Advanced management for",
+          "text2": "total control"
+        },
+        "description": "Access your user panel to manage your preferences, check your history, and maintain full control in one place.",
+        "button": "Log in now"
+      }
+    }
+  }
 }

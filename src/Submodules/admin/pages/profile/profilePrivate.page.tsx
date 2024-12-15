@@ -6,10 +6,14 @@ import { Layout } from "shared/components/templates/layout/layout";
 import { setProfile } from "shared/utils/helpers";
 import { useAppSelector } from "store/hooks";
 import { selectProfileInfo } from "store/slices";
+import { useLanguage } from "shared/context";
 import "./profilePrivate.page.scss";
 
 export const ProfilePrivate = () => {
   const navigate = useNavigate();
+  const { language } = useLanguage();
+  const texts = language.profilePrivate;
+
   const {
     Profile: { displayName, email, photoURL, uid },
   } = useAppSelector(selectProfileInfo);
@@ -41,56 +45,48 @@ export const ProfilePrivate = () => {
         {isEditing ? (
           <div className="profile-form">
             <div className="input-group">
-              <label htmlFor="phone">Teléfono</label>
-              <p className="description">
-                Incluye el código de tu país si es necesario.
-              </p>
+              <label htmlFor="phone">{texts.labels.phone}</label>
+              <p className="description">{texts.descriptions.phone}</p>
               <input
                 id="phone"
                 type="text"
-                placeholder="Ingresa tu número de teléfono"
+                placeholder={texts.placeholders.phone}
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
               />
             </div>
 
             <div className="input-group">
-              <label htmlFor="address">Dirección</label>
-              <p className="description">
-                Escribe la dirección completa, incluyendo ciudad y país.
-              </p>
+              <label htmlFor="address">{texts.labels.address}</label>
+              <p className="description">{texts.descriptions.address}</p>
               <input
                 id="address"
                 type="text"
-                placeholder="Ingresa tu dirección"
+                placeholder={texts.placeholders.address}
                 value={address}
                 onChange={(e) => setAddress(e.target.value)}
               />
             </div>
 
             <div className="input-group">
-              <label htmlFor="rh">Grupo sanguíneo (RH)</label>
-              <p className="description">
-                Indica tu grupo sanguíneo y factor RH.
-              </p>
+              <label htmlFor="rh">{texts.labels.rh}</label>
+              <p className="description">{texts.descriptions.rh}</p>
               <input
                 id="rh"
                 type="text"
-                placeholder="Ejemplo: O+, A-"
+                placeholder={texts.placeholders.rh}
                 value={rh}
                 onChange={(e) => setRh(e.target.value)}
               />
             </div>
 
             <div className="input-group">
-              <label htmlFor="profesion">Profesión</label>
-              <p className="description">
-                Ejemplo: Ingeniero de Software, Médico, etc.
-              </p>
+              <label htmlFor="profesion">{texts.labels.profession}</label>
+              <p className="description">{texts.descriptions.profession}</p>
               <input
                 id="profesion"
                 type="text"
-                placeholder="Ingresa tu profesión"
+                placeholder={texts.placeholders.profession}
                 value={profesion}
                 onChange={(e) => setProfesion(e.target.value)}
               />
@@ -101,27 +97,27 @@ export const ProfilePrivate = () => {
                 onClick={() => setIsEditing(false)}
                 className="secondary-button"
               >
-                Cancelar
+                {texts.buttons.cancel}
               </button>
               <button onClick={handleSave} className="primary-button">
-                Guardar Información
+                {texts.buttons.save}
               </button>
             </div>
           </div>
         ) : (
           <div className="profile-info">
-            <p>{phone || "Teléfono no registrado"}</p>
-            <p>{address || "Dirección no registrada"}</p>
-            <p>{rh || "RH no registrado"}</p>
-            <p>{profesion || "Profesión no registrada"}</p>
+            <p>{phone || texts.messages.noPhone}</p>
+            <p>{address || texts.messages.noAddress}</p>
+            <p>{rh || texts.messages.noRh}</p>
+            <p>{profesion || texts.messages.noProfession}</p>
             <button
               onClick={() => setIsEditing(true)}
               className="primary-button"
             >
-              Editar Información
+              {texts.buttons.edit}
             </button>
             <button onClick={handleLogout} className="secondary-button">
-              Cerrar Sesión
+              {texts.buttons.logout}
             </button>
           </div>
         )}

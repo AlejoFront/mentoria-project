@@ -1,38 +1,122 @@
 {
-    "shared": {
-        "components": {
-            "loginForm": {
-                "email": {
-                    "name": "email",
-                    "label": "Correo electrónico",
-                    "placeholder": "example@example.com"
-                },
-                "password": {
-                    "name": "password",
-                    "label": "Contraseña",
-                    "placeholder": "Escribe aquí tu contraseña"
-                },
-                "button": {
-                    "text": "Inciar sesión"
-                }
-            }
-        }
+  "shared": {
+    "languageSelector": {
+      "label": "Selecciona tu idioma",
+      "default": "es",
+      "en": "Inglés",
+      "es": "Español"
     },
-    "404":{},
-    "admin": {},
-    "auth":{},
-    "public": {
-        "components": {},
-        "pages": {
-            "contacts": {},
-            "home": {
-                "title": {
-                    "text1": "Gestión avanzada para el",
-                    "text2": "control total"
-                },
-                "description": "Accede a tu panel de usuario para gestionar tus preferencias, verificar tu historial y mantener el control total en un solo lugar.",
-                "button": "Inicia sesión ahora"
-            }
-        }
+    "menu": {
+      "admin": {
+        "home": "Inicio",
+        "profile": "Perfil"
+      },
+      "noLoggedIn": {
+        "login": "Iniciar sesión",
+        "register": "Registrarse"
+      }
     }
+  },
+  "404": {
+    "title": "404",
+    "description": "Oops... Parece que la página que buscas no existe.",
+    "link": "Regresar al inicio"
+  },
+  "admin": {},
+  "auth": {
+    "login": {
+      "title": "Iniciar sesión",
+      "description": "Inicia sesión para acceder a tu cuenta y tener todo lo que necesitas al alcance de tu mano.",
+      "email": {
+        "name": "email",
+        "label": "Correo electrónico",
+        "placeholder": "example@example.com"
+      },
+      "password": {
+        "name": "password",
+        "label": "Contraseña",
+        "placeholder": "Escribe aquí tu contraseña"
+      },
+      "button": {
+        "text": "Inciar sesión"
+      },
+      "googleButton": {
+        "text": "Inicia sesión con Google"
+      },
+      "redirectMessage": {
+        "message": "¿No tienes una cuenta?",
+        "link": "Regístrate"
+      }
+    },
+    "register": {
+      "title": "Crear cuenta",
+      "description": "Regístrate para comenzar a utilizar todas las funciones de tu panel de usuario.",
+      "email": {
+        "name": "email",
+        "label": "Correo electrónico",
+        "placeholder": "example@example.com"
+      },
+      "password": {
+        "name": "password",
+        "label": "Contraseña",
+        "placeholder": "Escribe aquí tu contraseña"
+      },
+      "button": {
+        "text": "Crear cuenta"
+      },
+      "googleButton": {
+        "text": "Regístrate con Google"
+      },
+      "redirectMessage": {
+        "message": "¿Ya tienes una cuenta?",
+        "link": "Inicia sesión"
+      }
+    }
+  },
+  "profilePrivate": {
+    "labels": {
+      "phone": "Teléfono",
+      "address": "Dirección",
+      "rh": "Grupo sanguíneo (RH)",
+      "profession": "Profesión"
+    },
+    "descriptions": {
+      "phone": "Incluye el código de tu país si es necesario.",
+      "address": "Escribe la dirección completa, incluyendo ciudad y país.",
+      "rh": "Indica tu grupo sanguíneo y factor RH.",
+      "profession": "Ejemplo: Ingeniero de Software, Médico, etc."
+    },
+    "placeholders": {
+      "phone": "Ingresa tu número de teléfono",
+      "address": "Ingresa tu dirección",
+      "rh": "Ejemplo: O+, A-",
+      "profession": "Ingresa tu profesión"
+    },
+    "buttons": {
+      "edit": "Editar Información",
+      "save": "Guardar Información",
+      "cancel": "Cancelar",
+      "logout": "Cerrar Sesión"
+    },
+    "messages": {
+      "noPhone": "Teléfono no registrado",
+      "noAddress": "Dirección no registrada",
+      "noRh": "RH no registrado",
+      "noProfession": "Profesión no registrada"
+    }
+  },
+  "public": {
+    "components": {},
+    "pages": {
+      "contacts": {},
+      "home": {
+        "title": {
+          "text1": "Gestión avanzada para el",
+          "text2": "control total"
+        },
+        "description": "Accede a tu panel de usuario para gestionar tus preferencias, verificar tu historial y mantener el control total en un solo lugar.",
+        "button": "Inicia sesión ahora"
+      }
+    }
+  }
 }

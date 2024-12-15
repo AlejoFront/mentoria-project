@@ -30,8 +30,8 @@ export const LoginForm: React.FC<LoginFormProps> = ({
   } = methods;
 
   const formTexts = isRegister
-    ? language.shared.components.registerForm
-    : language.shared.components.loginForm;
+    ? language.auth.register
+    : language.auth.login;
 
   const redirectLink = isRegister ? '/auth/login' : '/auth/register';
 
