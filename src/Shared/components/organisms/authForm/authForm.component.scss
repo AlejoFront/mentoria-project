@@ -22,10 +22,10 @@
 
   .button {
     padding: 0.75rem;
-    background-color: #6a11cb;
+    background-color: #6B46C1;
     color: white;
     border: none;
-    border-radius: 8px;
+    border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
     font-weight: bold;
@@ -33,8 +33,7 @@
     margin-bottom: 1rem;
 
     &:hover {
-      background-color: #6310bb;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      background-color: darken(#6B46C1, 10%);
     }
   }
 
