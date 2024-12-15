@@ -1,54 +1,28 @@
+import { useAuth } from "hooks/useAuth";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "config";
-import {
-  createUserWithEmailAndPassword,
-  GoogleAuthProvider,
-  signInWithPopup,
-} from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { LoginForm } from "shared/components/organisms/loginForm/loginForm.component";
-import { createUserByUID, isExistProfileByUID } from "shared/utils";
+import { Layout } from "shared/components";
 import "./register.page.scss";
 
-const provider = new GoogleAuthProvider();
 export const RegisterPage = () => {
   const navigate = useNavigate();
+  const { isLoading, setIsLoading, loginWithGoogle } = useAuth(navigate);
 
   const onRegisterWithEmail = (data: { email: string; password: string }) => {
+    setIsLoading(true);
     createUserWithEmailAndPassword(auth, data.email, data.password)
-      .then(async ({ user }) => {
-        await createByIdUser(user);
-        navigate("/");
-      })
-      .catch((e) => console.log(e));
+      .catch((e) => console.log(e))
+      .finally(() => setIsLoading(false));
   };
 
-  const onSignInGoogle = () => {
-    signInWithPopup(auth, provider)
-      .then(async ({ user }) => {
-        await createByIdUser(user);
-      })
-      .catch((e) => console.log(e));
-  };
-
-  const createByIdUser = async (user: any) => {
-    if (await isExistProfileByUID(user.uid)) {
-      return;
-    }
-    const data = {
-      displayName: user.displayName || "",
-      email: user.email,
-      photoURL: user.photoURL || "",
-    };
-    await createUserByUID(data, user.uid);
-  };
+  if (isLoading) return <>Cargando.....</>;
 
   return (
-    <section className="login">
-      <LoginForm
-        onSubmit={onRegisterWithEmail}
-        onGoogleLogin={onSignInGoogle}
-      />
-    </section>
+    <Layout className="login">
+      <LoginForm onSubmit={onRegisterWithEmail} onGoogleLogin={loginWithGoogle} isRegister/>
+    </Layout>
   );
 };
 

@@ -1,48 +1,27 @@
+import { useAuth } from "hooks/useAuth";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "config";
-import {
-  GoogleAuthProvider,
-  signInWithEmailAndPassword,
-  signInWithPopup,
-} from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { LoginForm } from "shared/components/organisms/loginForm/loginForm.component";
 import { Layout } from "shared/components/templates/layout/layout";
-import { createUserByUID, isExistProfileByUID } from "shared/utils";
-
 import "./login.page.scss";
 
-const provider = new GoogleAuthProvider();
 export const LoginPage = () => {
   const navigate = useNavigate();
+  const { isLoading, setIsLoading, loginWithGoogle } = useAuth(navigate);
 
   const onLoginWithEmail = (data: { email: string; password: string }) => {
+    setIsLoading(true);
     signInWithEmailAndPassword(auth, data.email, data.password)
-      .then((response) => {
-        navigate("/");
-      })
-      .catch((e) => console.log(e));
+      .catch((e) => console.log(e))
+      .finally(() => setIsLoading(false));
   };
 
-  const onSignInGoogle = () => {
-    signInWithPopup(auth, provider)
-      .then(async ({ user }) => {
-        if (await isExistProfileByUID(user.uid)) {
-          return;
-        }
-        const data = {
-          displayName: user.displayName!,
-          email: user.email!,
-          photoURL: user.photoURL!,
-        };
-        await createUserByUID(data, user.uid);
-        navigate("/");
-      })
-      .catch((e) => console.log(e));
-  };
+  if (isLoading) return <>Cargando.....</>;
 
   return (
     <Layout className="login">
-      <LoginForm onSubmit={onLoginWithEmail} onGoogleLogin={onSignInGoogle} />
+      <LoginForm onSubmit={onLoginWithEmail} onGoogleLogin={loginWithGoogle} />
     </Layout>
   );
 };
