@@ -19,19 +19,6 @@ export const isExistProfileByUID = async (uid: string) => {
     return !!await getUserByUID('uid')
 }
 
-export const setProfilePhone = async (data: {phone: string}, uid: string) => {
-    return await updateDoc(doc(db, 'users', uid), {
-        phone: data.phone
-    });
-}
-
-export const setProfileAddress = async (data: {address: string}, uid: string) => {
-    return await updateDoc(doc(db, 'users', uid), {
-        address: data.address
-    });
-}
-
-
-export const setProfile = async (data: {address?: string, phone?: string}, uid: string) => {
+export const setProfile = async (data: {photoURL?: string, address?: string, phone?: string, rh?: string, profesion?: string }, uid: string) => {
     return await updateDoc(doc(db, 'users', uid), clearData(data));
 }
