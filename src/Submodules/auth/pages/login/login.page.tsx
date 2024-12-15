@@ -1,8 +1,8 @@
-import { useAuth } from "hooks/useAuth";
-import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "config";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { useAuth } from "hooks/useAuth";
 import { useNavigate } from "react-router-dom";
-import { LoginForm } from "shared/components/organisms/loginForm/loginForm.component";
+import { LoginForm } from "shared/components/organisms/authForm/authForm.component";
 import { Layout } from "shared/components/templates/layout/layout";
 import "./login.page.scss";
 

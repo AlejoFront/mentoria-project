@@ -1,9 +1,9 @@
-import { useAuth } from "hooks/useAuth";
-import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "config";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { useAuth } from "hooks/useAuth";
 import { useNavigate } from "react-router-dom";
-import { LoginForm } from "shared/components/organisms/loginForm/loginForm.component";
 import { Layout } from "shared/components";
+import { LoginForm } from "shared/components/organisms/authForm/authForm.component";
 import "./register.page.scss";
 
 export const RegisterPage = () => {
