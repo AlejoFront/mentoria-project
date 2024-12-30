@@ -3,7 +3,7 @@ import logo from "shared/assets/img/logo.png";
 import { useAppSelector } from "store";
 import { selectAuthInfo } from "store/slices";
 import "./layout.scss";
-import { useLanguage } from "shared/context";
+import { useUserPreferences } from "shared/context";
 
 type LayoutProps = {
   children: React.ReactNode;
@@ -12,18 +12,18 @@ type LayoutProps = {
 
 export const Layout = ({ children, className }: LayoutProps) => {
   const location = useLocation();
-  const { language, swtchLanguage } = useLanguage();
+  const { translate,updatePreferences } = useUserPreferences();
   const { isAuthenticated } = useAppSelector(selectAuthInfo);
-  const menu = language.shared.menu;
+
 
   const menuItems = {
     admin: [
-      { label: menu.admin.home, path: "/" },
-      { label: menu.admin.profile, path: "/profile" },
+      { label: translate("shared.menu.admin.home"), path: "/" },
+      { label: translate("shared.menu.admin.profile"), path: "/profile" },
     ],
     noLoggedIn: [
-      { label: menu.noLoggedIn.login, path: "/auth/login" },
-      { label: menu.noLoggedIn.register, path: "/auth/register" },
+      { label: translate("shared.menu.noLoggedIn.login"), path: "/auth/login" },
+      { label: translate("shared.menu.noLoggedIn.register"), path: "/auth/register" },
     ],
   };
 
@@ -31,7 +31,7 @@ export const Layout = ({ children, className }: LayoutProps) => {
 
   const handleLanguageChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedLanguage = event.target.value as "en" | "es";
-    swtchLanguage(selectedLanguage);
+    updatePreferences({language: selectedLanguage});
   };
 
   return (
@@ -54,15 +54,15 @@ export const Layout = ({ children, className }: LayoutProps) => {
               ))}
           <div className="language-select">
             <label htmlFor="language-selector" className="sr-only">
-              {language.shared.languageSelector.label}
+              {translate("language.shared.languageSelector.lable")}
             </label>
             <select
               id="language-selector"
               onChange={handleLanguageChange}
-              defaultValue={language.shared.languageSelector.default}
+              defaultValue={translate("shared.languageSelector.default")}
             >
-              <option value="en">{language.shared.languageSelector.en}</option>
-              <option value="es">{language.shared.languageSelector.es}</option>
+              <option value="en">{translate("shared.languageSelector.en")}</option>
+              <option value="es">{translate("shared.languageSelector.es")}</option>
             </select>
           </div>
             </ul>

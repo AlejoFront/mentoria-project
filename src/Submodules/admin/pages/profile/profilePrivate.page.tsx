@@ -6,13 +6,12 @@ import { Layout } from "shared/components/templates/layout/layout";
 import { setProfile } from "shared/utils/helpers";
 import { useAppSelector } from "store/hooks";
 import { selectProfileInfo } from "store/slices";
-import { useLanguage } from "shared/context";
+import { useUserPreferences } from "shared/context";
 import "./profilePrivate.page.scss";
 
 export const ProfilePrivate = () => {
   const navigate = useNavigate();
-  const { language } = useLanguage();
-  const texts = language.profilePrivate;
+  const { translate } = useUserPreferences();
 
   const {
     Profile: { displayName, email, photoURL, uid },
@@ -45,48 +44,48 @@ export const ProfilePrivate = () => {
         {isEditing ? (
           <div className="profile-form">
             <div className="input-group">
-              <label htmlFor="phone">{texts.labels.phone}</label>
-              <p className="description">{texts.descriptions.phone}</p>
+              <label htmlFor="phone">{translate("profilePrivate.labels.phone")}</label>
+              <p className="description">{translate("profilePrivate.descriptions.phone")}</p>
               <input
                 id="phone"
                 type="text"
-                placeholder={texts.placeholders.phone}
+                placeholder={translate("profilePrivate.placeholders.phone")}
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
               />
             </div>
 
             <div className="input-group">
-              <label htmlFor="address">{texts.labels.address}</label>
-              <p className="description">{texts.descriptions.address}</p>
+              <label htmlFor="address">{translate("profilePrivate.labels.address")}</label>
+              <p className="description">{translate("profilePrivate.descriptions.address")}</p>
               <input
                 id="address"
                 type="text"
-                placeholder={texts.placeholders.address}
+                placeholder={translate("profilePrivate.placeholders.address")}
                 value={address}
                 onChange={(e) => setAddress(e.target.value)}
               />
             </div>
 
             <div className="input-group">
-              <label htmlFor="rh">{texts.labels.rh}</label>
-              <p className="description">{texts.descriptions.rh}</p>
+              <label htmlFor="rh">{translate("profilePrivate.labels.rh")}</label>
+              <p className="description">{translate("profilePrivate.descriptions.rh")}</p>
               <input
                 id="rh"
                 type="text"
-                placeholder={texts.placeholders.rh}
+                placeholder={translate("profilePrivate.placeholders.rh")}
                 value={rh}
                 onChange={(e) => setRh(e.target.value)}
               />
             </div>
 
             <div className="input-group">
-              <label htmlFor="profesion">{texts.labels.profession}</label>
-              <p className="description">{texts.descriptions.profession}</p>
+              <label htmlFor="profesion">{translate("profilePrivate.labels.profession")}</label>
+              <p className="description">{translate("profilePrivate.descriptions.profession")}</p>
               <input
                 id="profesion"
                 type="text"
-                placeholder={texts.placeholders.profession}
+                placeholder={translate("profilePrivate.placeholders.profession")}
                 value={profesion}
                 onChange={(e) => setProfesion(e.target.value)}
               />
@@ -97,27 +96,27 @@ export const ProfilePrivate = () => {
                 onClick={() => setIsEditing(false)}
                 className="secondary-button"
               >
-                {texts.buttons.cancel}
+                {translate("profilePrivate.buttons.cancel")}
               </button>
               <button onClick={handleSave} className="primary-button">
-                {texts.buttons.save}
+                {translate("profilePrivate.buttons.save")}
               </button>
             </div>
           </div>
         ) : (
           <div className="profile-info">
-            <p>{phone || texts.messages.noPhone}</p>
-            <p>{address || texts.messages.noAddress}</p>
-            <p>{rh || texts.messages.noRh}</p>
-            <p>{profesion || texts.messages.noProfession}</p>
+            <p>{phone || translate("profilePrivate.messages.noPhone")}</p>
+            <p>{address || translate("profilePrivate.messages.noAddress")}</p>
+            <p>{rh || translate("profilePrivate.messages.noRh")}</p>
+            <p>{profesion || translate("profilePrivate.messages.noProfession")}</p>
             <button
               onClick={() => setIsEditing(true)}
               className="primary-button"
             >
-              {texts.buttons.edit}
+              {translate("profilePrivate.buttons.edit")}
             </button>
             <button onClick={handleLogout} className="secondary-button">
-              {texts.buttons.logout}
+              {translate("profilePrivate.buttons.logout")}
             </button>
           </div>
         )}
