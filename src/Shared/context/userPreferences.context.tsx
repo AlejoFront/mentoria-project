@@ -6,6 +6,7 @@ import {
     FC,
     useEffect,
     useMemo,
+    useCallback,
   } from "react";
 
 import {languages} from 'shared/locale';
@@ -39,32 +40,31 @@ export const UserPreferencesProvider: FC<{ children: ReactNode }> = ({ children 
     localStorage.setItem("userPreferences", JSON.stringify(preferences));
   }, [preferences]);
 
-  const updatePreferences = (newPreferences: Partial<Preferences>) => {
+  const updatePreferences = useCallback((newPreferences: Partial<Preferences>) => {
     const updatedPreferences = { ...preferences, ...newPreferences };
     setPreferences(updatedPreferences);
     localStorage.setItem("userPreferences", JSON.stringify(updatedPreferences));
-  };
+  }, [preferences]);
 
-  const translate = (key: string): any => { 
+  const translate = useCallback((key: string): any => { 
     const keys = key.split(".");
     let translation: any = languages[preferences.language];
   
     for (const k of keys) {
       if (translation[k] === undefined) {
-        console.warn(`Translation key "${key}" not found.`);
-        return key; // Devuelve la clave original si no se encuentra
+        return key;
       }
       translation = translation[k];
     }
   
-    return translation; // Ahora puede ser string u objeto
-  };
+    return translation;
+  }, [preferences.language]);
 
   const value = useMemo(() => ({
     preferences,
     updatePreferences,
     translate
-  }), [preferences]);
+  }), [preferences, translate, updatePreferences]);
 
   return (
     <UserPreferencesContext.Provider value={value}>
