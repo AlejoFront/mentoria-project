@@ -5,6 +5,7 @@ import {
     ReactNode,
     FC,
     useEffect,
+    useMemo,
   } from "react";
 
 import {languages} from 'shared/locale';
@@ -58,13 +59,15 @@ export const UserPreferencesProvider: FC<{ children: ReactNode }> = ({ children 
   
     return translation; // Ahora puede ser string u objeto
   };
-  
-  
+
+  const value = useMemo(() => ({
+    preferences,
+    updatePreferences,
+    translate
+  }), [preferences]);
 
   return (
-    <UserPreferencesContext.Provider
-      value={{ preferences, updatePreferences, translate }}
-    >
+    <UserPreferencesContext.Provider value={value}>
       {children}
     </UserPreferencesContext.Provider>
   );
