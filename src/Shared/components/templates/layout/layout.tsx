@@ -12,9 +12,8 @@ type LayoutProps = {
 
 export const Layout = ({ children, className }: LayoutProps) => {
   const location = useLocation();
-  const { translate,updatePreferences } = useUserPreferences();
+  const { translate, updatePreferences } = useUserPreferences();
   const { isAuthenticated } = useAppSelector(selectAuthInfo);
-
 
   const menuItems = {
     admin: [
@@ -23,15 +22,20 @@ export const Layout = ({ children, className }: LayoutProps) => {
     ],
     noLoggedIn: [
       { label: translate("shared.menu.noLoggedIn.login"), path: "/auth/login" },
-      { label: translate("shared.menu.noLoggedIn.register"), path: "/auth/register" },
+      {
+        label: translate("shared.menu.noLoggedIn.register"),
+        path: "/auth/register",
+      },
     ],
   };
 
   const currentMenu = isAuthenticated ? menuItems.admin : menuItems.noLoggedIn;
 
-  const handleLanguageChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+  const handleLanguageChange = (
+    event: React.ChangeEvent<HTMLSelectElement>
+  ) => {
     const selectedLanguage = event.target.value as "en" | "es";
-    updatePreferences({language: selectedLanguage});
+    updatePreferences({ language: selectedLanguage });
   };
 
   return (
@@ -52,19 +56,23 @@ export const Layout = ({ children, className }: LayoutProps) => {
                   <Link to={item.path}>{item.label}</Link>
                 </li>
               ))}
-          <div className="language-select">
-            <label htmlFor="language-selector" className="sr-only">
-              {translate("language.shared.languageSelector.lable")}
-            </label>
-            <select
-              id="language-selector"
-              onChange={handleLanguageChange}
-              defaultValue={translate("shared.languageSelector.default")}
-            >
-              <option value="en">{translate("shared.languageSelector.en")}</option>
-              <option value="es">{translate("shared.languageSelector.es")}</option>
-            </select>
-          </div>
+              <div className="language-select">
+                <label htmlFor="language-selector" className="sr-only">
+                  {translate("language.shared.languageSelector.lable")}
+                </label>
+                <select
+                  id="language-selector"
+                  onChange={handleLanguageChange}
+                  defaultValue={translate("shared.languageSelector.default")}
+                >
+                  <option value="en">
+                    {translate("shared.languageSelector.en")}
+                  </option>
+                  <option value="es">
+                    {translate("shared.languageSelector.es")}
+                  </option>
+                </select>
+              </div>
             </ul>
           </nav>
         </div>

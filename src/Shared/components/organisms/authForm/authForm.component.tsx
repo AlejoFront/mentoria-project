@@ -2,7 +2,7 @@ import React from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { GoogleButton, Input } from "shared/components/atoms";
-import { useLanguage } from "shared/context";
+import { useUserPreferences } from "shared/context";
 import "./authForm.component.scss";
 
 type FormValues = {
@@ -21,7 +21,7 @@ export const LoginForm: React.FC<LoginFormProps> = ({
   onGoogleLogin,
   isRegister
 }) => {
-  const { language } = useLanguage();
+  const { translate } = useUserPreferences();
   const methods = useForm<FormValues>({ mode: "onBlur" });
 
   const {
@@ -30,8 +30,8 @@ export const LoginForm: React.FC<LoginFormProps> = ({
   } = methods;
 
   const formTexts = isRegister
-    ? language.auth.register
-    : language.auth.login;
+    ? translate("auth.register")
+    : translate("auth.login");
 
   const redirectLink = isRegister ? '/auth/login' : '/auth/register';
 

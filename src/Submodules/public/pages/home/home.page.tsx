@@ -1,17 +1,19 @@
-import { Link } from 'react-router-dom';
-import { Layout } from 'shared/components';
-import { useLanguage } from 'shared/context';
-import './home.page.scss';
+import { Link } from "react-router-dom";
+import { Layout } from "shared/components";
+import { useUserPreferences } from "shared/context";
+import "./home.page.scss";
 
 export const HomePage = () => {
-  const {language} =  useLanguage();
+  const { translate } = useUserPreferences();
+  
   return (
     <Layout className="home">
       <h1>
-        {language.public.pages.home.title.text1} <span>{language.public.pages.home.title.text2}</span>
+        {translate("public.pages.home.title.text1")}{" "}
+        <span>{translate("public.pages.home.title.text2")}</span>
       </h1>
-      <p>{language.public.pages.home.description}</p>
-      <Link to="/auth/login">{language.public.pages.home.button }</Link>
+      <p>{translate("public.pages.home.description")}</p>
+      <Link to="/auth/login">{translate("public.pages.home.button")}</Link>
     </Layout>
   );
 };

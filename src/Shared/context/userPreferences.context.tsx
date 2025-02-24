@@ -18,7 +18,7 @@ type Preferences = {
 type UserPreferencesContextType = {
     preferences: Preferences;
     updatePreferences: (newPreferences: Partial<Preferences>) => void;
-    translate: (key: string) => string;
+    translate: (key: string) => any;
 }
 
 const defaultPreferences: Preferences = {
@@ -44,18 +44,21 @@ export const UserPreferencesProvider: FC<{ children: ReactNode }> = ({ children 
     localStorage.setItem("userPreferences", JSON.stringify(updatedPreferences));
   };
 
-  const translate = (key: string): string => {
+  const translate = (key: string): any => { 
     const keys = key.split(".");
     let translation: any = languages[preferences.language];
+  
     for (const k of keys) {
-        if (translation[k] === undefined) {
-            console.warn(`Translation key "${key}" not found.`);
-            return key; // Devuelve la clave original si no se encuentra
-          }
-          translation = translation[k];
+      if (translation[k] === undefined) {
+        console.warn(`Translation key "${key}" not found.`);
+        return key; // Devuelve la clave original si no se encuentra
       }
-    return typeof translation === "string" ? translation : key;
+      translation = translation[k];
+    }
+  
+    return translation; // Ahora puede ser string u objeto
   };
+  
   
 
   return (
